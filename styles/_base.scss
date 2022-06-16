@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
+
+:root {
+  --background: #fafafa;
+  --color: #111517;
+  --floating-background: #fff;
+  --placeholder-color: #c4c4c4;
+  --border-radius: 0.5rem;
+  --shadow: rgba(0, 0, 0, 0.06) 0px 5px 15px;
+  --text-size: 0.8rem;
+}
+
+.dark {
+  --background: hsl(207, 26%, 17%);
+  --color: #fff;
+  --floating-background: hsl(209, 23%, 22%);
+  --placeholder-color: #fff;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: var(--background);
+}
+
+*,
+body {
+  font-family: "Nunito Sans", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.wrapper {
+  margin: 2rem 2.5rem 3rem;
+  @media screen and (min-width: 756px) {
+    margin: 3rem 4rem;
+  }
+}
+
+
+.filters{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  z-index: 9;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+
+  }
+}

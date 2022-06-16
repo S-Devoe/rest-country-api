@@ -1,0 +1,47 @@
+
+
+header {
+  background-color: var(--floating-background);
+  color: var(--color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.6rem 1.5rem ;
+  box-shadow: var(--shadow);
+
+  @media screen and (min-width: 768px) {
+    padding: 2rem;
+  }
+
+  .header_content{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    .svg{
+        margin-top: .5rem;
+    }
+    .title{
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--color);
+    }
+  }
+
+}
+
+.dark-mode_button{
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    color: var(--color);
+    cursor: pointer;
+
+    .icon{
+      margin-top: .3rem;
+    }
+
+    p{
+        font-size: .895rem;
+    }
+}

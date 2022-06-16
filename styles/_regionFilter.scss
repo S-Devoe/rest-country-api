@@ -1,0 +1,48 @@
+.region_filter {
+  .select_region {
+    box-sizing: var(--shadow);
+    background-color: var(--floating-background);
+    padding: 0.8rem 0.89rem 0.8rem 1rem;
+    color: var(--color);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    width: 13.2rem;
+    text-transform: capitalize;
+    cursor: pointer;
+    
+
+    .icons {
+      margin-left: auto;
+      margin-top: 0.3rem;
+      font-size: 1rem;
+    }
+  }
+
+  .regions_list {
+    position: relative;
+    background-color: var(--floating-background);
+    margin-bottom: -16rem;
+    color: var(--color);
+    text-transform: capitalize;
+    margin-top: 1.5rem;
+    background-color: var(--floating-background);
+    width: 15rem;
+    padding: 1.3rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    z-index: 100;
+
+    @media screen and (min-width: 768px) {
+        margin-bottom: -15rem;
+    }
+
+    li{
+        padding-bottom: 1rem;
+        font-size: .9rem;
+    }
+  }
+}
