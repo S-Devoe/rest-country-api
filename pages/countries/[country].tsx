@@ -1,4 +1,4 @@
-import { count } from "console";
+
 import { AnyTxtRecord } from "dns";
 import type { GetStaticPaths, GetStaticProps } from "next";
 import CountryDetails from "../../components/CountryDetails";
@@ -26,11 +26,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
       )
     );
 
-  console.log(countryNames);
+  // console.log(countryNames);
 
-  const countryNamesWithDash = countryNames.map((item: string) => DataFormatter.countryNameToUri(item));
+  const countryNamesWithDash = countryNames.map((item: string) =>
+    DataFormatter.countryNameToUri(item)
+  );
 
-  console.log(countryNamesWithDash);
+  // console.log(countryNamesWithDash);
 
   const paths = countryNamesWithDash.map((country: string) => ({
     params: { country: country },
@@ -43,17 +45,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context: any) => {
-
   // turn the dash in the url back to space
   const countryName = context.params.country.replace(/-/g, " ");
-  console.log(countryName + " is the country name");
+  // console.log(countryName + " is the country name");
 
   const response = await fetch(
     `https://restcountries.com/v3.1/name/${countryName}?fullText=true`
   );
 
   const countryDetails = await response.json();
-  console.log(countryDetails);
+
+  // console.log(countryDetails);
 
   const loadingBorder: Array<string> = [];
   if (countryDetails[0].borders) {
@@ -73,10 +75,8 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
 
   // Get the key from the object first
   for (const key in countryDetails[0].languages) {
-
     // then use the key to get the value, just like we do with index when dealing with arrays
     getLanguages.push(countryDetails[0].languages[key]);
-
   }
 
   const getNativeNames = [];
@@ -95,7 +95,7 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
       getCurrency.push(countryDetails[0].currencies[key].name);
     }
   }
-  console.log(countryDetails[0].capital);
+  // console.log(countryDetails[0].capital);
 
   const border = countryDetails[0].borders
     ? loadingBorder
@@ -108,8 +108,12 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
         nativeName: getNativeNames,
         population: countryDetails[0].population,
         region: countryDetails[0].region,
-        subRegion: countryDetails[0].subregion,
-        capital: countryDetails[0].capital ? countryDetails[0].capital : "This country as no capital",
+        subRegion: countryDetails[0].subregion
+          ? countryDetails[0].subregion
+          : "This country has no sub region",
+        capital: countryDetails[0].capital
+          ? countryDetails[0].capital
+          : "This country has no capital",
         topLevelDomain: countryDetails[0].tld,
         currencies: getCurrency,
         languages: getLanguages,
