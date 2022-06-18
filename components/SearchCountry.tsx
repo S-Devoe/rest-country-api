@@ -8,18 +8,6 @@ const SearchCountry: any = (): any => {
   const router = useRouter();
 
 
-  // useEffect(() => {
-  //   // if(false) means after loading perform the following function
-  //   if (false) {
-  //     if (searchBar !== null) {
-  //       router.push("/?search=" + searchBar, undefined, {
-  //           shallow: true
-  //       })
-  //     } else{
-  //        router.push("/", undefined, { shallow: true });
-  //     }
-  //   }
-  // },[searchBar]);
 
   const handleChange = (e: any) => {
     setSearchBar(e.target.value !== "" ? e.target.value : null);

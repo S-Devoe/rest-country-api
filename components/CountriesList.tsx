@@ -19,7 +19,7 @@ function CountriesList(): JSX.Element {
     countries.then((data) => setCountriesData(data));
   }, [])
   
-  console.log(countriesData)
+  // console.log(countriesData)
 
   let countriesContent;
   const loading = countriesData.length === 0;
