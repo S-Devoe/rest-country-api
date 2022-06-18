@@ -19,6 +19,7 @@ function CountriesList(): JSX.Element {
     countries.then((data) => setCountriesData(data));
   }, [])
   
+  console.log(countriesData)
 
   let countriesContent;
   const loading = countriesData.length === 0;
@@ -29,7 +30,7 @@ function CountriesList(): JSX.Element {
     countriesContent = filterCountries(countriesData).map((country, index) => (
       <Link
         href={`countries/${DataFormatter.countryNameToUri(
-          country.name.common
+         country.name.common
         )}`}
         key={index}
       >
@@ -68,8 +69,8 @@ function CountriesList(): JSX.Element {
                 "  seems not to be a country on our earth!"
               : DataFormatter.capitalizeText(searchBar) +
                 " seems not to be found in " +
-                region +
-                "!"}
+                region + 
+                "! / check that you spelt the country correctly"}
           </h2>
         </div>
       );

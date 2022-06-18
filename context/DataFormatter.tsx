@@ -11,7 +11,7 @@ const removeAccents = (text: string) =>
 
 const countryNameToUri = (name: string) => {
   return removeAccents(
-    name.split("(")[0].trim().replace(/ /g, "-").toLowerCase()
+    name.split(",")[0].split("(")[0].trim().replace(/ /g, "-").toLowerCase()
   );
 };
 
