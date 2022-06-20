@@ -17,8 +17,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     .then((res) => res.json())
     .then((data) =>
       data.map(
-        (item: any) =>
-          item.name.common.toLowerCase()
+        (item: any) => item.name.common.toLowerCase()
 
         // uriToCountryName is to change the space in the country name
         // to dash, that is united kingdom to united-kingdom
@@ -49,12 +48,17 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
   const countryName = context.params.country.replace(/-/g, " ");
   console.log(countryName + " is the country name");
 
-  const refined = DataFormatter.uriToCountryName(countryName);
-  console.log(refined);
+  let response;
+  if (countryName === "china") {
+    response = await fetch(
+      `https://restcountries.com/v3.1/name/${countryName}?fullText=true`
+    );
+  } else {
+    response = await fetch(
+      `https://restcountries.com/v3.1/name/${countryName}`
+    );
+  }
 
-  const response = await fetch(
-    `https://restcountries.com/v3.1/name/${countryName}`
-  );
   console.log(response);
 
   if (!response.ok) {
