@@ -25,7 +25,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       )
     );
 
-  console.log(countryNames);
+  // console.log(countryNames);
 
   const countryNamesWithDash = countryNames.map((item: string) =>
     item.trim().replace(/ /g, "-")
@@ -33,7 +33,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   console.log(countryNamesWithDash);
 
-  const paths = countryNamesWithDash.map((country: string) => ({
+  const paths = countryNames.map((country: string) => ({
     params: { country: country },
   }));
 
@@ -45,7 +45,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context: any) => {
   // turn the dash in the url back to space
-  const countryName = context.params.country.replace(/-/g, " ");
+
+  let countryName = context.params.country;
+
   console.log(countryName + " is the country name");
 
   let response;
@@ -75,12 +77,9 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
         `https://restcountries.com/v3.1/alpha?codes=${border}`
       );
       const countryBordersInText = await response.json();
-      // console.log(countryBordersInText);
       loadingBorder.push(countryBordersInText[0].name.common.toLowerCase());
     }
   }
-
-  // console.log(loadingBorder);
 
   const getLanguages = [];
 

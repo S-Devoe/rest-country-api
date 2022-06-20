@@ -30,7 +30,7 @@ function CountriesList(): JSX.Element {
       <Link
         href={`countries/${country.name.common
           .toLowerCase()
-          .replace(/ /g, "-")}`}
+          }`}
         key={index}
       >
         <div className="country_card">
