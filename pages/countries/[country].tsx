@@ -81,6 +81,8 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
     }
   }
 
+  console.log(loadingBorder)
+
   const getLanguages = [];
 
   // Get the key from the object first

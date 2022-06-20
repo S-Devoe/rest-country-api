@@ -55,7 +55,13 @@ const CountryDetails = ({ country }: any) => {
                   region: <span> {country.region} </span>
                 </li>
                 <li>
-                  sub region: <span> {country.subRegion === null ? "No sub region" : country.subRegion } </span>
+                  sub region:{" "}
+                  <span>
+                    {" "}
+                    {country.subRegion === null
+                      ? "No sub region"
+                      : country.subRegion}{" "}
+                  </span>
                 </li>
                 <li>
                   capital:<span> {country.capital} </span>
@@ -64,8 +70,9 @@ const CountryDetails = ({ country }: any) => {
                   top level domain:{" "}
                   <span>
                     {" "}
-
-                    {country.topLevelDomain === null? "no top level domain" : country.topLevelDomain.map((tl: string) => tl)}{" "}
+                    {country.topLevelDomain === null
+                      ? "no top level domain"
+                      : country.topLevelDomain.map((tl: string) => tl)}{" "}
                   </span>
                 </li>
                 <li>
@@ -80,14 +87,9 @@ const CountryDetails = ({ country }: any) => {
             <div className="borders">
               <h2>Border Country(s):</h2>
               <div className="border_countries">
-                {typeof country.borders === 'object'
+                {typeof country.borders === "object"
                   ? country.borders.map((border: string, index: number) => (
-                      <Link
-                        key={index}
-                        href={`/countries/${DataFormatter.countryNameToUri(
-                          border
-                        )}`}
-                      >
+                      <Link key={index} href={`/countries/${border}`}>
                         <span>{border}</span>
                       </Link>
                     ))
