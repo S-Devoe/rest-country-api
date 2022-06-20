@@ -1,4 +1,3 @@
-
 import { AnyTxtRecord } from "dns";
 import type { GetStaticPaths, GetStaticProps } from "next";
 import CountryDetails from "../../components/CountryDetails";
@@ -53,9 +52,12 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
     `https://restcountries.com/v3.1/name/${countryName}?fullText=true`
   );
 
+  if (!response.ok) {
+    throw new Error("Something went wrong!");
+  }
   const countryDetails = await response.json();
 
-  // console.log(countryDetails);
+  console.log(countryDetails);
 
   const loadingBorder: Array<string> = [];
   if (countryDetails[0].borders) {
@@ -108,9 +110,7 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
         nativeName: getNativeNames,
         population: countryDetails[0].population,
         region: countryDetails[0].region,
-        subRegion: countryDetails[0].subregion
-          ? countryDetails[0].subregion
-          : "This country has no sub region",
+        subRegion: countryDetails[0].subregion || null,
         capital: countryDetails[0].capital
           ? countryDetails[0].capital
           : "This country has no capital",

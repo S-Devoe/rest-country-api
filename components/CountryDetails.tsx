@@ -55,7 +55,7 @@ const CountryDetails = ({ country }: any) => {
                   region: <span> {country.region} </span>
                 </li>
                 <li>
-                  sub region: <span> {country.subRegion} </span>
+                  sub region: <span> {country.subRegion === null ? "No sub region" : country.subRegion } </span>
                 </li>
                 <li>
                   capital:<span> {country.capital} </span>
