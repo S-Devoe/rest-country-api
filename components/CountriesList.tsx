@@ -8,17 +8,16 @@ import DataFormatter from "../context/DataFormatter";
 import Image from "next/image";
 import SearchCountry from "./SearchCountry";
 import RegionFilter from "./RegionFilter";
-import Router  from "next/router";
+import Router from "next/router";
 
 function CountriesList(): JSX.Element {
-  
   const [countriesData, setCountriesData] = useState<CountryTypes[]>([]);
   const { filterCountries, region, searchBar } = FilterCountriesContext();
   useEffect(() => {
     const countries = Countries.getAllCountries();
     countries.then((data) => setCountriesData(data));
-  }, [])
-  
+  }, []);
+
   // console.log(countriesData)
 
   let countriesContent;
@@ -29,9 +28,9 @@ function CountriesList(): JSX.Element {
   } else {
     countriesContent = filterCountries(countriesData).map((country, index) => (
       <Link
-        href={`countries/${DataFormatter.countryNameToUri(
-         country.name.common
-        )}`}
+        href={`countries/${country.name.common
+          .toLowerCase()
+          .replace(/ /g, "-")}`}
         key={index}
       >
         <div className="country_card">
@@ -69,7 +68,7 @@ function CountriesList(): JSX.Element {
                 "  seems not to be a country on our earth!"
               : DataFormatter.capitalizeText(searchBar) +
                 " seems not to be found in " +
-                region + 
+                region +
                 "! / check that you spelt the country correctly"}
           </h2>
         </div>

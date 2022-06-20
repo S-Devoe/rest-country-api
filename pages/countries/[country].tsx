@@ -1,3 +1,4 @@
+import { count } from "console";
 import { AnyTxtRecord } from "dns";
 import type { GetStaticPaths, GetStaticProps } from "next";
 import CountryDetails from "../../components/CountryDetails";
@@ -17,7 +18,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     .then((data) =>
       data.map(
         (item: any) =>
-          DataFormatter.uriToCountryName(item.name.common.toLowerCase())
+          item.name.common.toLowerCase()
 
         // uriToCountryName is to change the space in the country name
         // to dash, that is united kingdom to united-kingdom
@@ -25,13 +26,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
       )
     );
 
-  // console.log(countryNames);
+  console.log(countryNames);
 
   const countryNamesWithDash = countryNames.map((item: string) =>
-    DataFormatter.countryNameToUri(item)
+    item.trim().replace(/ /g, "-")
   );
 
-  // console.log(countryNamesWithDash);
+  console.log(countryNamesWithDash);
 
   const paths = countryNamesWithDash.map((country: string) => ({
     params: { country: country },
@@ -46,11 +47,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context: any) => {
   // turn the dash in the url back to space
   const countryName = context.params.country.replace(/-/g, " ");
-  // console.log(countryName + " is the country name");
+  console.log(countryName + " is the country name");
+
+  const refined = DataFormatter.uriToCountryName(countryName);
+  console.log(refined);
 
   const response = await fetch(
-    `https://restcountries.com/v3.1/name/${countryName}?fullText=true`
+    `https://restcountries.com/v3.1/name/${countryName}`
   );
+  console.log(response);
 
   if (!response.ok) {
     throw new Error("Something went wrong!");
@@ -114,7 +119,7 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
         capital: countryDetails[0].capital
           ? countryDetails[0].capital
           : "This country has no capital",
-        topLevelDomain: countryDetails[0].tld,
+        topLevelDomain: countryDetails[0].tld || null,
         currencies: getCurrency,
         languages: getLanguages,
         borders: border,

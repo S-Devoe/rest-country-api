@@ -64,7 +64,8 @@ const CountryDetails = ({ country }: any) => {
                   top level domain:{" "}
                   <span>
                     {" "}
-                    {country.topLevelDomain.map((tl: string) => tl)}{" "}
+
+                    {country.topLevelDomain === null? "no top level domain" : country.topLevelDomain.map((tl: string) => tl)}{" "}
                   </span>
                 </li>
                 <li>
