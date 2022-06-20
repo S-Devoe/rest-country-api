@@ -3,6 +3,7 @@ import { useState } from "react";
 
 function DarkMode() {
    const [darkMode, setDarkMode] = useState<Boolean>(false);
+     
 
   if (typeof window !== "undefined") {
     if (darkMode) {

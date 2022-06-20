@@ -93,7 +93,7 @@ const CountryDetails = ({ country }: any) => {
                         <span>{border}</span>
                       </Link>
                     ))
-                  : "This country has no border country"}
+                  :<p>This country has no border country</p>}
               </div>
             </div>
           </div>

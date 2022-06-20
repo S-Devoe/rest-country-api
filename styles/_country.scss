@@ -128,7 +128,7 @@
       flex: 1;
     }
     .details {
-        flex: 1;
+      flex: 1;
       padding-top: 1.5rem;
       ul {
         width: 48%;
@@ -158,4 +158,8 @@
       }
     }
   }
+}
+
+p {
+  color: var(--color);
 }
