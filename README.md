@@ -48,9 +48,27 @@ Users should be able to:
 
 ### What I learned
 
-    This project looks easy at first glance and it was all going well until it was time to pull data from the API. I started with a mobile first layout and scaled up to tablet and then desktop view. I used CSS flexbox for the layout of the countries in the mobile view, and CSS Grid for tablet and desktop layout.
+    This project looks easy at first glance and it was all going well
 
-    I was able to learn how to pull data from an API using JavaScript fetch. After fetching the data some bugs popped out of no where, i was able to figure them out with the aid my Terminal and it was due to some country's name not being in English or having hyphen "-" in between their names. i was able to solve this by using javaScript regular expression (and also with the help of Google 😁).
+    until it was time to pull data from the API. I started with a mobile
+
+    first layout and scaled up to tablet and then desktop view. I used
+
+    CSS flexbox for the layout of the countries in the mobile view, and
+    
+    CSS Grid for tablet and desktop layout.
+
+    I was able to learn how to pull data from an API using JavaScript 
+    
+    fetch. After fetching the data some bugs popped out of no where, i
+    
+    was able to figure them out with the aid my Terminal and it was due
+    
+    to some country's name not being in English or having hyphen "-" in
+    
+    between their names. i was able to solve this by using javaScript
+    
+    regular expression (and also with the help of Google 😁).
 
 ## Author
 
